@@ -35,21 +35,18 @@ $(document).ready(function(){
     })
 })
 
+//Reload page before send warning
+if ($("#pasos_section").length) {
+  window.onbeforeunload = function() {
+    return "Estas seguro que deseas salir de esta página, si da clic en aceptar sus cambios no serán guardados";
+  };
+}
 
 var step = 1;
 var next = function(){
     window.scrollTo(0, 0);
-    //console.log('next '+'raw step '+step);
     if (step < 5) {
       step++;
-      //step++;
-      //console.log('next '+'step '+step);
-      // $('.steps').hide();
-      // $('.step'+step).show();
-      // $('.step_ico').removeClass('active');
-      // for (var i = 1; i <= step; i++) {
-      //     $('.step_ico'+i).addClass('active');
-      // }
       go(step);
     }
 }
@@ -57,24 +54,18 @@ var next = function(){
 var prev = function(){
     if(step > 1){
       step--;
-      //step--;
-      //console.log('prev '+'step '+step);
       go(step);
     }
 }
 
 var go = function(i){
     step = i;
-    //console.log('go '+'step '+step);
-    //step++;
-    //console.log('go '+'step '+step);
     $('.steps').hide();
     $('.step'+step).show();
     $('.step_ico').removeClass('active');
     for (var i = 1; i <= step; i++) {
         $('.step_ico'+i).addClass('active');
     }
-    //next();
 }
 
 var send = function(){
@@ -88,6 +79,8 @@ var send = function(){
         return false;
     }else{
         $('#form_send').submit();
+        //Unset reload message
+        window.onbeforeunload = null;
     }
 }
 

@@ -19,6 +19,7 @@ session_start();
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
       <title>Test Drive | Plan de Acogida</title>
    </head>
+   <input type="hidden" id="pasos_section" name="" value="1">
    <body class="d-flex flex-column">
         <a href="#" class="net"><<p class="ml-1 hidde d-none d-sm-block" onclick="prev()">Anterior</p></a>
          <a href="#" class="prev"><p class="mr-1 hidde d-none d-sm-block" onclick="next()">Siguiente</p>></a>
